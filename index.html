@@ -1,0 +1,61 @@
+<div id="captchaOverlay" role="dialog" aria-modal="true" aria-labelledby="captchaTitle">
+  <div class="container">
+    <h1 id="captchaTitle">No soy un robot</h1>
+    <div
+      class="captchat"
+      id="captchaBox"
+      role="button"
+      tabindex="0"
+      aria-pressed="false"
+      aria-label="Haz clic para verificar que no eres un robot"
+    >
+      <div class="checkbox-style" id="check"></div>
+      <span>Haz clic para verificar</span>
+    </div>
+    <div class="loader" id="loader" aria-hidden="true"></div>
+    <button id="continueBtn" style="display:none" aria-disabled="true">Continuar</button>
+  </div>
+</div>
+
+<script>
+  const check = document.getElementById('check');
+  const loader = document.getElementById('loader');
+  const continueBtn = document.getElementById('continueBtn');
+  const captchaBox = document.getElementById('captchaBox');
+
+  let verified = false;
+  let processing = false;
+
+  function startVerification() {
+    if (verified || processing) return;
+    processing = true;
+
+    check.classList.add('checked');
+    captchaBox.setAttribute('aria-pressed', 'true');
+    loader.style.display = 'block';
+    continueBtn.style.display = 'none';
+    continueBtn.setAttribute('aria-disabled', 'true');
+
+    setTimeout(() => {
+      loader.style.display = 'none';
+      continueBtn.style.display = 'inline-block';
+      continueBtn.setAttribute('aria-disabled', 'false');
+      verified = true;
+      processing = false;
+    }, 2000);
+  }
+
+  captchaBox.addEventListener('click', startVerification);
+  captchaBox.addEventListener('keydown', (e) => {
+    if(e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      startVerification();
+    }
+  });
+
+  continueBtn.addEventListener('click', () => {
+    if (!verified) return;
+    document.getElementById('captchaOverlay').style.display = 'none';
+    window.location.href = "https://promo-tiqutesbaratos.github.io/tiquetesbaratos/";
+  });
+</script>
