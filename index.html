@@ -1,21 +1,307 @@
-<div id="captchaOverlay" role="dialog" aria-modal="true" aria-labelledby="captchaTitle">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🚀 Explora Colombia | Vuelos Futuristas</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Orbitron', sans-serif;
+      background: #0e0f14;
+      color: #d0d6f9;
+    }
+
+    header {
+      background: linear-gradient(90deg, #0fffc1, #00c6ff);
+      color: #0e0f14;
+      padding: 30px 20px;
+      text-align: center;
+      box-shadow: 0 0 30px #00fff7;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 36px;
+    }
+
+    header p {
+      font-size: 16px;
+      margin-top: 8px;
+      font-weight: 500;
+      color: #9ae6ff;
+      text-transform: none;
+    }
+
+    .promos {
+      background: #1a1c29;
+      padding: 50px 25px;
+      max-width: 900px;
+      margin: 40px auto;
+      border-radius: 15px;
+      box-shadow: 0 0 40px #00c6ff88;
+      border: 1px solid #00e5ff;
+      backdrop-filter: blur(10px);
+    }
+
+    .promos h2 {
+      text-align: center;
+      color: #00fff7;
+      margin-bottom: 40px;
+      font-size: 28px;
+      letter-spacing: 1.5px;
+    }
+
+    .promo-item {
+      background: linear-gradient(90deg, #0fffc1 0%, #00c6ff 100%);
+      padding: 20px;
+      border-radius: 12px;
+      margin: 15px 0;
+      box-shadow: 0 0 15px #00f0ffaa;
+      color: #0e0f14;
+      font-weight: 600;
+      font-size: 18px;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+    .promo-item:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 30px #00fff7;
+    }
+
+    .promo-item strong {
+      color: #0e0f14;
+      text-shadow: 0 0 8px #004466;
+    }
+
+    .info-section {
+      background: #121423;
+      padding: 40px 25px;
+      max-width: 900px;
+      margin: 40px auto 60px auto;
+      border-radius: 15px;
+      box-shadow: 0 0 30px #00c6ff88;
+      border: 1px solid #00e5ff;
+      color: #a0c8ff;
+      line-height: 1.5;
+      letter-spacing: 0.8px;
+    }
+
+    .info-section h3 {
+      color: #00fff7;
+      margin-top: 0;
+      margin-bottom: 20px;
+      font-size: 24px;
+      letter-spacing: 1.2px;
+      font-weight: 700;
+      text-transform: uppercase;
+      text-shadow: 0 0 10px #00c6ff;
+    }
+
+    .info-section p {
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+
+    footer {
+      background: #00c6ff;
+      color: #0e0f14;
+      text-align: center;
+      padding: 20px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      box-shadow: 0 -3px 15px #00fff7;
+      user-select: none;
+    }
+
+    /* CAPTCHA Overlay */
+    #captchaOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(14,15,20, 0.95);
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+    }
+
+    .container {
+      background: #121423;
+      padding: 30px 25px;
+      border-radius: 15px;
+      width: 350px;
+      text-align: center;
+      box-shadow: 0 0 30px #00c6ffaa;
+      color: #00fff7;
+      font-weight: 600;
+      user-select: none;
+    }
+
+    .container h1 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+    }
+
+    .captchat {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      margin: 25px auto;
+      padding: 15px 20px;
+      border: 2px solid #00fff7;
+      border-radius: 10px;
+      width: fit-content;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      background: #0e0f14;
+    }
+
+    .captchat:hover {
+      background: #00fff7;
+      color: #0e0f14;
+    }
+
+    .checkbox-style {
+      width: 26px;
+      height: 26px;
+      border: 2.5px solid #00fff7;
+      border-radius: 6px;
+      position: relative;
+      background: #121423;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+
+    .checkbox-style.checked {
+      background: #00fff7;
+      border-color: #00fff7;
+    }
+
+    .checkbox-style.checked::after {
+      content: "✓";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 18px;
+      color: #0e0f14;
+      font-weight: 700;
+      text-shadow: none;
+    }
+
+    .loader {
+      display: none;
+      border: 4px solid #0e0f14;
+      border-top: 4px solid #00fff7;
+      border-radius: 50%;
+      width: 28px;
+      height: 28px;
+      margin: 15px auto;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    #continueBtn {
+      display: none;
+      margin-top: 20px;
+      background: #00fff7;
+      color: #0e0f14;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 700;
+      font-size: 16px;
+      letter-spacing: 1.2px;
+      transition: box-shadow 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    #continueBtn:hover {
+      box-shadow: 0 0 15px #00fff7;
+    }
+  </style>
+</head>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-17119015779"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'AW-17119015779');
+</script>
+
+<!-- Event snippet for Compra conversion page -->
+<script>
+  gtag('event', 'conversion', {
+      'send_to': 'AW-17119015779/qYo-CK_G_toaEOPm_eI_',
+      'transaction_id': ''
+  });
+</script>
+
+<body>
+
+<div id="captchaOverlay">
   <div class="container">
-    <h1 id="captchaTitle">No soy un robot</h1>
-    <div
-      class="captchat"
-      id="captchaBox"
-      role="button"
-      tabindex="0"
-      aria-pressed="false"
-      aria-label="Haz clic para verificar que no eres un robot"
-    >
-      <div class="checkbox-style" id="check"></div>
-      <span>Haz clic para verificar</span>
+    <h1>Verificación Humana</h1>
+    <div class="captchat" id="captchaBox" role="button" tabindex="0" aria-pressed="false">
+      <div class="checkbox-style" id="check" aria-hidden="true"></div>
+      <span>Haz clic para confirmar que no eres un robot</span>
     </div>
     <div class="loader" id="loader" aria-hidden="true"></div>
-    <button id="continueBtn" style="display:none" aria-disabled="true">Continuar</button>
+    <button id="continueBtn" aria-label="Continuar al sitio">Continuar</button>
   </div>
 </div>
+
+<header>
+  <h1>Explora Colombia como Nunca Antes</h1>
+  <p>Vuelos rápidos, baratos y futuristas para cada rincón del país 🚀</p>
+</header>
+
+<main>
+  <section class="promos">
+    <h2>✨ Ofertas Galácticas de Viaje</h2>
+    <div class="promo-item" tabindex="0" aria-label="Oferta Bogotá a Medellín desde 75 mil pesos">
+      <p><strong>Bogotá → Medellín:</strong> Desde $75.000 COP</p>
+    </div>
+    <div class="promo-item" tabindex="0" aria-label="Oferta Cali a Cartagena desde 105 mil pesos">
+      <p><strong>Cali → Cartagena:</strong> Desde $105.000 COP</p>
+    </div>
+    <div class="promo-item" tabindex="0" aria-label="Oferta Bucaramanga a Santa Marta desde 90 mil pesos">
+      <p><strong>Bucaramanga → Santa Marta:</strong> Desde $90.000 COP</p>
+    </div>
+  </section>
+
+  <section class="info-section" aria-live="polite">
+    <h3>🙏 Gratitud Cósmica a Colombia</h3>
+    <p>Nos impulsa la energía vibrante de Colombia y su gente increíble, quienes hacen posible conectar vuelos económicos para todos.</p>
+
+    <h3>🌌 Espíritu de Innovación</h3>
+    <p>Adoptamos la tecnología y la creatividad para ofrecer experiencias de vuelo que trascienden lo tradicional y exploran nuevos horizontes.</p>
+
+    <h3>📜 Nuestra Odisea</h3>
+    <p>Desde 2020 iniciamos un viaje para transformar la forma de viajar en Colombia. Hoy somos la opción preferida para vuelos accesibles y modernos.</p>
+
+    <h3>🚀 Gracias por viajar con nosotros</h3>
+    <p>Tu confianza nos motiva a seguir creando vuelos más baratos, seguros y con una experiencia futurista en cada vuelo.</p>
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Agencia aTravecolombia. Todos los derechos reservados.</p>
+</footer>
 
 <script>
   const check = document.getElementById('check');
@@ -23,39 +309,25 @@
   const continueBtn = document.getElementById('continueBtn');
   const captchaBox = document.getElementById('captchaBox');
 
-  let verified = false;
-  let processing = false;
-
-  function startVerification() {
-    if (verified || processing) return;
-    processing = true;
-
-    check.classList.add('checked');
-    captchaBox.setAttribute('aria-pressed', 'true');
-    loader.style.display = 'block';
-    continueBtn.style.display = 'none';
-    continueBtn.setAttribute('aria-disabled', 'true');
-
-    setTimeout(() => {
-      loader.style.display = 'none';
-      continueBtn.style.display = 'inline-block';
-      continueBtn.setAttribute('aria-disabled', 'false');
-      verified = true;
-      processing = false;
-    }, 2000);
-  }
-
-  captchaBox.addEventListener('click', startVerification);
-  captchaBox.addEventListener('keydown', (e) => {
-    if(e.key === 'Enter' || e.key === ' ') {
-      e.preventDefault();
-      startVerification();
+  captchaBox.addEventListener('click', () => {
+    if (!check.classList.contains('checked')) {
+      check.classList.add('checked');
+      captchaBox.setAttribute('aria-pressed', 'true');
+      loader.style.display = 'block';
+      continueBtn.style.display = 'none';
+      setTimeout(() => {
+        loader.style.display = 'none';
+        continueBtn.style.display = 'inline-block';
+      }, 2000);
     }
   });
 
   continueBtn.addEventListener('click', () => {
-    if (!verified) return;
     document.getElementById('captchaOverlay').style.display = 'none';
-    window.location.href = "https://promo-tiqutesbaratos.github.io/tiquetesbaratos/";
+    // Cambia esta URL al destino final deseado
+    window.location.href = "https://promo-tiqutesbaratos.github.io/tiquetesbaratos/prom.html";
   });
 </script>
+
+</body>
+</html>
