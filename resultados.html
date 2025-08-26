@@ -11,7 +11,22 @@
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="stylesheet" href="../css/resultados.css" />
   <link rel="stylesheet" href="../css/mobile.css" />
+ <style>
+    .banner-tiquetes {
+      background-color: #007bff; /* Azul */
+      padding: 15px;
+      text-align: center;
+      border-radius: 6px;
+      margin-bottom: 20px;
+    }
 
+    .banner-tiquetes h1 {
+      margin: 0;
+      font-size: 2rem;
+      font-weight: bold;
+      color: black; /* Letras negras */
+    }
+  </style>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       // Leer origen y destino desde URL params
@@ -160,6 +175,9 @@
   </div>
 
   <div class="container">
+    <div class="banner-tiquetes">
+    <h1>Tiquetes Baratos</h1>
+  </div>
     <div class="radio-buttons">
       <input type="radio" id="soloIda" name="tipoVuelo" value="soloIda" />
       <label for="soloIda">Solo Ida</label>
@@ -669,4 +687,5 @@
 
 
 </html>
+
 
