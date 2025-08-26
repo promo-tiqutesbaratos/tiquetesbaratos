@@ -27,7 +27,7 @@ button.buscar-2 {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 331px;
+    width: 120px;
     height: 44px;
     padding: 0;
     box-sizing: border-box;
@@ -1133,5 +1133,6 @@ html.mobile-loading body > *:not(#mobile-loader) {
     width: 100%;
   }
 }
+
 
 
