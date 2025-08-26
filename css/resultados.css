@@ -24,19 +24,19 @@
 
 /* Search Button */
 button.buscar-2 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 50px;
-  height: 45px;
-  padding: 0;
-  box-sizing: border-box;
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 331px;
+    height: 44px;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 15%;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button.buscar-2:hover {
@@ -1133,4 +1133,5 @@ html.mobile-loading body > *:not(#mobile-loader) {
     width: 100%;
   }
 }
+
 
