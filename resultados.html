@@ -13,24 +13,25 @@
   <link rel="stylesheet" href="../css/mobile.css" />
  <style>
     .banner-tiquetes {
-      background-color: #0056b3; /* Azul más fuerte */
+      background-color: #0056b3; /* Azul fuerte */
       padding: 25px 15px;
-      text-align: center;
+      text-align: center;   /* 🔹 Forzamos centrado */
       border-radius: 8px;
-      margin-bottom: 25px;
+      margin: 0 auto 25px auto; /* centrado dentro del container */
+      max-width: 900px;     /* ancho máximo opcional */
     }
 
     .banner-tiquetes h1 {
       margin: 0;
       font-size: 2.5rem;
       font-weight: bold;
-      color: white; /* Letras blancas */
+      color: white;
     }
 
     .banner-tiquetes p {
       margin: 5px 0 0 0;
       font-size: 1rem;
-      color: #e0e0e0; /* Blanco suave / gris claro */
+      color: #e0e0e0;
       font-style: italic;
     }
   </style>
@@ -695,6 +696,7 @@
 
 
 </html>
+
 
 
 
