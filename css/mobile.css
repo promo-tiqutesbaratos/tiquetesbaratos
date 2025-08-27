@@ -1635,8 +1635,10 @@ body,html {
     font-size: 16px;
   }
   .container {
-    padding: 15px 10px;
-    width: 80%;
+      
+        padding: 0px 3px;
+        width: 90%;
+    }
   }
 
 }
@@ -1696,4 +1698,5 @@ body,html {
     height: 28px;
     font-size: 12px;
   }
+
 }
