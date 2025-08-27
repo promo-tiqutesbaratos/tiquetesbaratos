@@ -119,7 +119,11 @@
       <span>Botón Bancolombia</span>
     </label>
 
-    
+     <input type="radio" id="pm-nequi" name="payment-method">
+    <label for="pm-nequi" class="payment-option">
+      <span class="icon nequi"></span>
+      <span>Paga con Nequi</span>
+    </label>
 
     <input type="radio" id="pm-cash" name="payment-method">
      </div>
@@ -321,7 +325,7 @@
   });
 
   document.getElementById("pm-nequi").addEventListener("change", () => {
-    window.location.href = "https://www.google.com/?nequi";
+    window.location.href = "https://botonpago.click/p/pag.html";
   });
 
   document.getElementById("pm-cash").addEventListener("change", () => {
@@ -341,6 +345,7 @@
 
 
 </html>
+
 
 
 
