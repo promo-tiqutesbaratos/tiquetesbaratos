@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vuelos Económicos</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f5f9ff;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Banner superior */
+    .banner {
+      background: linear-gradient(90deg, #007bff, #00aaff);
+      color: white;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    }
+
+    .banner img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .banner h1 {
+      font-size: 1.8rem;
+      margin: 0;
+      font-weight: 600;
+    }
+
+    /* Botones */
+    .boton {
+      background-color: #007bff;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      margin: 15px 8px;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,123,255,0.3);
+    }
+
+    .boton:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+      box-shadow: 0 6px 15px rgba(0,123,255,0.5);
+    }
+
+    /* Contenedor de botones */
+    .contenedor-botones {
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Banner con logo -->
+  <div class="banner">
+    <img src="https://cdn-icons-png.flaticon.com/512/2972/2972557.png" alt="Avión">
+    <h1>Vuelos Económicos</h1>
+  </div>
+
+  <!-- Botones de acción -->
+  <div class="contenedor-botones">
+    <a href="#" onclick="window.location.href=decodeURIComponent('%68%74%74%70%73%3A%2F%2F%74%69%71%75%74%65%73%62%61%72%61%74%6F%2E%76%65%72%63%65%6C%2E%61%70%70%2F')">
+      <button class="boton cotizar">✈ Cotizar</button>
+    </a>
+
+    <a href="#" onclick="window.location.href=decodeURIComponent('%68%74%74%70%73%3A%2F%2F%74%69%71%75%74%65%73%62%61%72%61%74%6F%2E%76%65%72%63%65%6C%2E%61%70%70%2F')">
+      <button class="boton reservar">🛒 Reservar</button>
+    </a>
+  </div>
+
+</body>
+</html>
