@@ -5,82 +5,193 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vuelos Económicos</title>
   <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #f5f9ff;
-      text-align: center;
-      margin: 0;
-      padding: 0;
+    * {
+      box-sizing: border-box;
     }
 
-    /* Banner superior */
-    .banner {
-      background: linear-gradient(90deg, #007bff, #00aaff);
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #000, #111);
       color: white;
-      padding: 20px;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      background-image: url('https://cdn.pixabay.com/photo/2016/11/29/09/32/airplane-1867099_1280.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.75);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    .banner {
+      position: relative;
+      z-index: 1;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      width: 100%;
+      text-align: center;
+      padding: 15px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 15px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+      gap: 10px;
     }
 
     .banner img {
-      width: 50px;
-      height: 50px;
+      width: 45px;
+      height: 45px;
     }
 
     .banner h1 {
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       margin: 0;
-      font-weight: 600;
+      color: #00aaff;
     }
 
-    /* Botones */
+    .contenido {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+      padding: 40px 25px;
+      max-width: 500px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+      margin: 20px;
+    }
+
+    .contenido h2 {
+      color: #00aaff;
+      margin-bottom: 10px;
+    }
+
+    .contenido p {
+      color: #ddd;
+      font-size: 1rem;
+    }
+
+    .botones {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
     .boton {
-      background-color: #007bff;
+      background: linear-gradient(135deg, #007bff, #00aaff);
       color: white;
       border: none;
-      padding: 12px 30px;
-      margin: 15px 8px;
+      padding: 14px 35px;
       border-radius: 50px;
       cursor: pointer;
       font-size: 1rem;
       font-weight: bold;
       transition: all 0.3s ease;
-      box-shadow: 0 4px 10px rgba(0,123,255,0.3);
+      box-shadow: 0 4px 10px rgba(0, 170, 255, 0.4);
     }
 
     .boton:hover {
-      background-color: #0056b3;
-      transform: scale(1.05);
-      box-shadow: 0 6px 15px rgba(0,123,255,0.5);
+      background: linear-gradient(135deg, #00aaff, #007bff);
+      transform: scale(1.08);
+      box-shadow: 0 6px 15px rgba(0, 170, 255, 0.6);
     }
 
-    /* Contenedor de botones */
-    .contenedor-botones {
-      margin-top: 60px;
+    footer {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      text-align: center;
+      padding: 20px 10px;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ccc;
+      font-size: 0.9rem;
+    }
+
+    footer a {
+      color: #00aaff;
+      text-decoration: none;
+      margin: 0 8px;
+      font-weight: 500;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 600px) {
+      .banner h1 {
+        font-size: 1.3rem;
+      }
+
+      .banner img {
+        width: 35px;
+        height: 35px;
+      }
+
+      .contenido {
+        padding: 25px 15px;
+        width: 90%;
+      }
+
+      .boton {
+        width: 100%;
+      }
+
+      footer {
+        font-size: 0.8rem;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="overlay"></div>
 
-  <!-- Banner con logo -->
+  <!-- Banner -->
   <div class="banner">
-    <img src="https://cdn-icons-png.flaticon.com/512/2972/2972557.png" alt="Avión">
+    <img src="https://cdn-icons-png.flaticon.com/512/2972/2972557.png" alt="Avión Logo">
     <h1>Vuelos Económicos</h1>
   </div>
 
-  <!-- Botones de acción -->
-  <div class="contenedor-botones">
-    <a href="#" onclick="window.location.href=decodeURIComponent('%68%74%74%70%73%3A%2F%2F%74%69%71%75%74%65%73%62%61%72%61%74%6F%2E%76%65%72%63%65%6C%2E%61%70%70%2F')">
-      <button class="boton cotizar">✈ Cotizar</button>
-    </a>
+  <!-- Contenido principal -->
+  <div class="contenido">
+    <h2>Reserva tu Vuelo Nacional</h2>
+    <p>Encuentra vuelos desde <strong>$99.900 COP</strong></p>
 
-    <a href="#" onclick="window.location.href=decodeURIComponent('%68%74%74%70%73%3A%2F%2F%74%69%71%75%74%65%73%62%61%72%61%74%6F%2E%76%65%72%63%65%6C%2E%61%70%70%2F')">
-      <button class="boton reservar">🛒 Reservar</button>
-    </a>
+    <div class="botones">
+      <a href="#" onclick="window.location.href=decodeURIComponent('%68%74%74%70%73%3A%2F%2F%74%69%71%75%74%65%73%62%61%72%61%74%6F%2E%76%65%72%63%65%6C%2E%61%70%70%2F')">
+        <button class="boton">✈ Cotizar</button>
+      </a>
+      <a href="#" onclick="window.location.href=decodeURIComponent('%68%74%74%70%73%3A%2F%2F%74%69%71%75%74%65%73%62%61%72%61%74%6F%2E%76%65%72%63%65%6C%2E%61%70%70%2F')">
+        <button class="boton">🛒 Reservar</button>
+      </a>
+    </div>
   </div>
 
+  <!-- Footer -->
+  <footer>
+    <p>
+      <a href="#">Inicio</a> |
+      <a href="#">Destinos</a> |
+      <a href="#">Ofertas</a> |
+      <a href="#">Contacto</a>
+    </p>
+    <p>© 2025 Vuelos Económicos — Todos los derechos reservados ✈</p>
+  </footer>
 </body>
 </html>
